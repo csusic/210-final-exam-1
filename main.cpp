@@ -21,7 +21,7 @@ int main() {
     //read codes from file
     while (fin >> origin) {
         fin >> dest;
-        flights[origin]++; 
+        flights[origin]++
         flights[dest]++;
     }
     
