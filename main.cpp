@@ -4,20 +4,27 @@
 #include <iomanip>
 #include <fstream>
 #include <string>
+#include <map>
 using namespace std;
 
 
 int main() {
     ifstream fin("data.txt"); //open file
     int count = 0; //initialize count to zero
-    string origin1, dest2; //strings to read from file
+    string origin, dest; //string to read from file
     
-    std::map<std::string, int>
-
-    //read codes from file one by one
-    while (fin >> origin1) {
-        (fin >> dest2);
-        cout << origin1 << " " << dest2 << endl;
+    std::map<std::string, int> flights;
+    
+    cout << "All airport traffic counts:" << endl;
+    cout << "Busiest airport(s) with count:" << count << endl;
+    cout << "Airports with traffic in range [" << "]:" << endl;
+    cout << "Airports with traffic in range [" << "]:" << endl;
+    
+    //read codes from file
+    while (fin >> origin) {
+        fin >> dest;
+        flights.insert({origin, count});
+        flights.insert({dest, count});
         count++;
     }
     
