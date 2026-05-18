@@ -15,10 +15,9 @@ int main() {
     
     std::map<std::string, int> flights;
     
-    cout << "All airport traffic counts:" << endl;
-    cout << "Busiest airport(s) with count:" << count << endl;
-    cout << "Airports with traffic in range [" << "]:" << endl;
-    cout << "Airports with traffic in range [" << "]:" << endl;
+    //cout << "Busiest airport(s) with count:" << count << endl;
+    //cout << "Airports with traffic in range [" << "]:" << endl;
+    //cout << "Airports with traffic in range [" << "]:" << endl;
     
     //read codes from file
     while (fin >> origin) {
@@ -26,6 +25,12 @@ int main() {
         flights.insert({origin, count});
         flights.insert({dest, count});
         count++;
+    }
+    
+    cout << "All airport traffic counts:" << endl;
+    for (std::map<std::string, int>::iterator it = flights.begin(); it != flights.end(); it++) { 
+        //it->first (origin), it->second (dest)
+        cout << it->first << " " << it->second << endl; 
     }
     
     fin.close(); //close file
