@@ -8,7 +8,7 @@
 using namespace std;
 
 //function prototype
-void printAirports(const map<string, int>& flights, int, int
+void printAirports(const map<string, int>&, int, int);
 
 int main() {
     ifstream fin("data.txt"); //open file
@@ -39,17 +39,26 @@ int main() {
     cout << "\nBusiest airport(s) with count: " << max << endl;
     for (std::map<std::string, int>::iterator it = flights.begin(); it != flights.end(); it++) {
         if (it->second == max) {
-            cout << it->first << " " << it-> second << endl;
+            cout << it->first << " " << it-> second << endl << endl;
         }
     }
     
-    cout << "\nAirports with traffic in range [" << "]:" << endl;
-    //printAirports(flights, 5, 8);
-    
-    cout << "\nAirports with traffic in range [" << "]:" << endl;
-    //printAirports(flights, 9, 12);
+    //call function to print airports in range 5-8
+    printAirports(flights, 5, 8);
+    //call function to print airports in range 9-12
+    printAirports(flights, 9, 12);
     
     fin.close(); //close file
 
     return 0;
+}
+
+//function that prints airports in ranges
+void printAirports(const map<string, int>& flights, int low, int high) {
+    cout << "Airports with traffic in range [" << low << ", " << high << "]:" << endl;
+    for (const auto& pair : flights) {
+        if (pair.second >= low && pair.second <= high) {
+            cout << pair.first << " " << pair.second;
+        }
+    }
 }
