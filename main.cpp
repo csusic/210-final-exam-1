@@ -27,11 +27,18 @@ int main() {
         count++;
     }
     
+    int max = 0;
     cout << "All airport traffic counts:" << endl;
     for (std::map<std::string, int>::iterator it = flights.begin(); it != flights.end(); it++) { 
         //it->first (origin), it->second (dest)
         cout << it->first << " " << it->second << endl; 
+        //find max count
+        if (it->second > max) {
+            max = it->second;
+        
+        }
     }
+    
     
     fin.close(); //close file
 
