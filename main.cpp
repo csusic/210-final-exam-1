@@ -1,7 +1,6 @@
 // COMSC-210 | Final Exam 1 | Christine Susic
 
 #include <iostream>
-#include <iomanip>
 #include <fstream>
 #include <string>
 #include <map>
@@ -12,9 +11,10 @@ void printAirports(const map<string, int>&, int, int);
 
 int main() {
     ifstream fin("data.txt"); //open file
-    int max = 0; //initialize count and max count to zero
-    string origin, dest; //string to read from file
+    int max = 0; //initialize maximum count to zero
+    string origin, dest; //strings to read from file
     
+    //map with flights origin(string), destination(string), and count
     std::map<std::string, int> flights;
     
     //read codes from file
@@ -24,20 +24,21 @@ int main() {
         flights[dest]++;
     }
     
-    //All airport traffic
+    //All airport traffic with counts
     cout << "All airport traffic counts:" << endl;
     for (std::map<std::string, int>::iterator it = flights.begin(); it != flights.end(); it++) { 
-        //output it->first (origin), it->second (dest)
+        //output it->first (string), it->second (int)
         cout << it->first << " " << it->second << endl; 
-        //find max count
+        //find maximum count
         if (it->second > max) {
             max = it->second;
         }
     }
     
-    //Busiest airport traffic
+    //Busiest airport traffic with counts
     cout << "\nBusiest airport(s) with count: " << max << endl;
     for (std::map<std::string, int>::iterator it = flights.begin(); it != flights.end(); it++) {
+        //output maximum count
         if (it->second == max) {
             cout << it->first << " " << it-> second << endl << endl;
         }
@@ -57,6 +58,7 @@ int main() {
 void printAirports(const map<string, int>& flights, int low, int high) {
     cout << "Airports with traffic in range [" << low << ", " << high << "]:" << endl;
     for (const auto& pair : flights) {
+        //if count is within range, ouput count
         if (pair.second >= low && pair.second <= high) {
             cout << pair.first << " " << pair.second << endl;
         }
