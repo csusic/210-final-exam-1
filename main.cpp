@@ -58,7 +58,8 @@ void printAirports(const map<string, int>& flights, int low, int high) {
     cout << "Airports with traffic in range [" << low << ", " << high << "]:" << endl;
     for (const auto& pair : flights) {
         if (pair.second >= low && pair.second <= high) {
-            cout << pair.first << " " << pair.second;
+            cout << pair.first << " " << pair.second << endl;
         }
     }
+    cout << endl;
 }
